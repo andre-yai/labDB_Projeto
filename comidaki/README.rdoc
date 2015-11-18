@@ -33,5 +33,5 @@ para
  `psql -U [username] -d comidaki -f modelofisicoREDUZIDO.sql.
  
 --Na pasta [Git/comidaki]:
--rodar `rake db:schema:rake`
+-rodar `rake db:schema:db`
 
