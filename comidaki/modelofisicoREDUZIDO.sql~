@@ -16,6 +16,7 @@ FOREIGN KEY(CPF) REFERENCES Usuario(CPF)
 
 CREATE TABLE Franquia (
 Nome VARCHAR(50) NOT NULL,
+Descricao VARCHAR(255),
 Faixa_de_preco VARCHAR(50) NOT NULL,
 Tempo_de_entrega_estimada INTEGER NOT NULL,
 Custo_de_entrega_km INTEGER NOT NULL,
@@ -70,25 +71,23 @@ ID INTEGER PRIMARY KEY,
 Status VARCHAR(50) NOT NULL,
 Data TIMESTAMP NOT NULL,
 Atualizado_em TIMESTAMP,
+Atraso_aproximado INTEGER,
 Valor Numeric NOT NULL,
 Quantidade INTEGER NOT NULL,
 CPF VARCHAR(11),
 CNPJ CHAR(14),
 FOREIGN KEY(CPF) REFERENCES Cliente(CPF),
-FOREIGN KEY(CNPJ) REFERENCES Cliente(CNPJ),
 CHECK (Valor > 0),
 CHECK (Quantidade > 0)
 );
 
 CREATE TABLE Restaurante (
 CNPJ CHAR(14) PRIMARY KEY,
-Nome VARCHAR(50) NOT NULL,
-Descricao VARCHAR(255)
+Nome VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Tipo_de_culinaria (
-ID INTEGER PRIMARY_KEY,
-Nome VARCHAR(50) UNIQUE
+Nome VARCHAR(50) PRIMARY KEY
 );
 
 CREATE TABLE franquia_tem_tipoculinario (
@@ -96,7 +95,7 @@ CNPJ CHAR(14),
 Nome VARCHAR(50),
 PRIMARY KEY(CNPJ,Nome),
 FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ),
-FOREIGN KEY(Nome) REFERENCES Tipo_de_culinaria(ID)
+FOREIGN KEY(Nome) REFERENCES Tipo_de_culinaria(Nome)
 );
 
 CREATE TABLE Ingrediente (
@@ -117,6 +116,7 @@ FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ)
 );
 
 CREATE TABLE e_composto_por (
+ID INTEGER,
 Nome VARCHAR(50),
 PRIMARY KEY(ID, Nome), 
 FOREIGN KEY(Nome) REFERENCES Ingrediente(Nome),

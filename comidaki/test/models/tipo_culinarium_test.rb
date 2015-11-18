@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PedidoTest < ActiveSupport::TestCase
+class TipoCulinariumTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

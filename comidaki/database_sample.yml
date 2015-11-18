@@ -84,5 +84,3 @@ test:
 production:
   <<: *default
   database: comidaki_production
-  username: comidaki
-  password: <%= ENV['COMIDAKI_DATABASE_PASSWORD'] %>
