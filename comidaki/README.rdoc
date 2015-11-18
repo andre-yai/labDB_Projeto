@@ -1,28 +1,34 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+How to Run:
 
-Things you may want to cover:
+-Instalar o rails usando o rvm; seguir as instrucoes do site:https://rvm.io/rvm/install
+seguir a 3a opcao "installing with rails".
 
-* Ruby version
+-Instalar o postgres, postgres-server-dev.
 
-* System dependencies
+-Editar o arquivo:
+`/etc/postgresql/9.4/main/pg_hba.conf`
+e mudar a linha:
+`  local   all             all                                     peer`
+para
+`local   all             all                                     md5`
 
-* Configuration
+-Rodar o `bundle install`.
 
-* Database creation
+--Na pasta [Git/comidaki]:
 
-* Database initialization
+-Rodar `bundle install`
 
-* How to run the test suite
+-Copiar arquivo `database_sample.yml` para a pasta `config`.
 
-* Services (job queues, cache servers, search engines, etc.)
+--Na pasta [Git/comidaki/config]:
 
-* Deployment instructions
+-Renomear o arquivo  `database_sample.yml` para `database.yml`
+-Editar `database.yml` com usuario e senha do postgres local.
 
-* ...
+--No postgres:
+-Criar uma database chamada `comidaki`, conectando no psql e rodando `create database comidaki`.
+-Executar o script sql para criar as tabelas no database com
+ `psql -U [username] -d comidaki -f modelofisicoREDUZIDO.sql.
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

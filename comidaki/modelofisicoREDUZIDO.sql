@@ -2,6 +2,9 @@
 -- Geração de Modelo físico Reduzido
 -- Sql ANSI 2003 - brModelo.
 
+create database comidaki;
+use database comidaaki;
+
 CREATE TABLE Usuario (
 Senha VARCHAR(50) NOT NULL,
 Nome VARCHAR(255) NOT NULL,
@@ -74,8 +77,12 @@ Valor Numeric NOT NULL,
 Quantidade INTEGER NOT NULL,
 CPF VARCHAR(11),
 CNPJ CHAR(14),
-FOREIGN KEY(CPF) REFERENCES Cliente(CPF),
-FOREIGN KEY(CNPJ) REFERENCES Cliente(CNPJ),
+CEP CHAR(8),
+Numero INTEGER,
+Complemento VARCHAR(50),
+FOREIGN KEY(CPF) REFERENCES Cliente(CPF)
+FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ),
+FOREIGN KEY(CEP,Numero,Complemento) REFERENCES Endereco_Cliente(CEP,Numero,Complemento),
 CHECK (Valor > 0),
 CHECK (Quantidade > 0)
 );
@@ -87,8 +94,8 @@ Descricao VARCHAR(255)
 );
 
 CREATE TABLE Tipo_de_culinaria (
-ID INTEGER PRIMARY_KEY,
-Nome VARCHAR(50) UNIQUE
+ID INTEGER PRIMARY KEY,
+Nome VARCHAR(50) NOT NULL, UNIQUE
 );
 
 CREATE TABLE franquia_tem_tipoculinario (
@@ -100,7 +107,8 @@ FOREIGN KEY(Nome) REFERENCES Tipo_de_culinaria(ID)
 );
 
 CREATE TABLE Ingrediente (
-Nome VARCHAR(50) PRIMARY KEY,
+ID INTEGER PRIMARY KEY,
+Nome VARCHAR(50) NOT NULL,
 Tipo VARCHAR(50)
 );
 
@@ -113,14 +121,15 @@ Imagem VARCHAR(50),
 ID INTEGER,
 CNPJ CHAR(14),
 PRIMARY KEY(ID),
-FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ)
+FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ),
 );
 
 CREATE TABLE e_composto_por (
-Nome VARCHAR(50),
-PRIMARY KEY(ID, Nome), 
-FOREIGN KEY(Nome) REFERENCES Ingrediente(Nome),
-FOREIGN KEY(ID) REFERENCES Prato(ID)
+ID_Prato INTEGER,
+ID_Ingrediente INTEGER,
+PRIMARY KEY(ID_Prato, ID_Ingrediente), 
+FOREIGN KEY(ID_Ingrediente) REFERENCES Ingrediente(ID),
+FOREIGN KEY(ID_Prato) REFERENCES Prato(ID)
 );
 
 CREATE TABLE Horario_de_funcionamento (
@@ -132,11 +141,13 @@ FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ)
 );
 
 CREATE TABLE e_subtipo (
-Nome VARCHAR(50),
-Nome_subtipo VARCHAR(50),
-PRIMARY KEY(Nome,Nome_subtipo),
-FOREIGN KEY(Nome) REFERENCES Tipo_de_culinaria(Nome),
-FOREIGN KEY(Nome_subtipo) REFERENCES Tipo_de_culinaria(Nome)
+Nome VARCHAR(50) NOT NULL,
+Nome_subtipo VARCHAR(50) NOT NULL,
+ID INTEGER,
+ID_subtipo INTEGER,
+PRIMARY KEY(ID, ID_subtipo),
+FOREIGN KEY(ID) REFERENCES Tipo_de_culinaria(ID),
+FOREIGN KEY(ID_subtipo) REFERENCES Tipo_de_culinaria(ID)
 );
 
 CREATE TABLE Avaliacao (
@@ -146,7 +157,7 @@ Comentario VARCHAR(255),
 Nota INTEGER NOT NULL,
 CPF VARCHAR(11),
 CNPJ CHAR(14),
-PRIMARY KEY (CNPJ, CPF,Data),
+PRIMARY KEY (CNPJ, CPF, Data),
 FOREIGN KEY(CPF) REFERENCES Cliente(CPF),
 FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ)
 );
