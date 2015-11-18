@@ -1,6 +1,7 @@
 == README
 
 How to Run:
+
 -Instalar o rails usando o rvm; seguir as instrucoes do site:https://rvm.io/rvm/install
 seguir a 3a opcao "installing with rails".
 
