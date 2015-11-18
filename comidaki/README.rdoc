@@ -31,4 +31,7 @@ para
 -Criar uma database chamada `comidaki`, conectando no psql e rodando `create database comidaki`.
 -Executar o script sql para criar as tabelas no database com
  `psql -U [username] -d comidaki -f modelofisicoREDUZIDO.sql.
+ 
+--Na pasta [Git/comidaki]:
+-rodar `rake db:schema:rake`
 
