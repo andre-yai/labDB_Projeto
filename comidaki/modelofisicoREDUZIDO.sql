@@ -80,7 +80,7 @@ CNPJ CHAR(14),
 CEP CHAR(8),
 Numero INTEGER,
 Complemento VARCHAR(50),
-FOREIGN KEY(CPF) REFERENCES Cliente(CPF)
+FOREIGN KEY(CPF) REFERENCES Cliente(CPF),
 FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ),
 FOREIGN KEY(CEP,Numero,Complemento) REFERENCES Endereco_Cliente(CEP,Numero,Complemento),
 CHECK (Valor > 0),
@@ -95,15 +95,16 @@ Descricao VARCHAR(255)
 
 CREATE TABLE Tipo_de_culinaria (
 ID INTEGER PRIMARY KEY,
-Nome VARCHAR(50) NOT NULL, UNIQUE
+Nome VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE franquia_tem_tipoculinario (
 CNPJ CHAR(14),
-Nome VARCHAR(50),
+Nome VARCHAR(50) NOT NULL,
+ID_tipo_culinaria INTEGER,
 PRIMARY KEY(CNPJ,Nome),
 FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ),
-FOREIGN KEY(Nome) REFERENCES Tipo_de_culinaria(ID)
+FOREIGN KEY(ID_tipo_culinaria) REFERENCES Tipo_de_culinaria(ID)
 );
 
 CREATE TABLE Ingrediente (
@@ -121,7 +122,7 @@ Imagem VARCHAR(50),
 ID INTEGER,
 CNPJ CHAR(14),
 PRIMARY KEY(ID),
-FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ),
+FOREIGN KEY(CNPJ) REFERENCES Franquia(CNPJ)
 );
 
 CREATE TABLE e_composto_por (
