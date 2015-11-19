@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117222337) do
+ActiveRecord::Schema.define(version: 1) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,13 +40,15 @@ ActiveRecord::Schema.define(version: 20151117222337) do
   end
 
   create_table "e_composto_por", id: false, force: :cascade do |t|
-    t.integer "id",              null: false
-    t.string  "nome", limit: 50, null: false
+    t.integer "id_prato",       null: false
+    t.integer "id_ingrediente", null: false
   end
 
   create_table "e_subtipo", id: false, force: :cascade do |t|
-    t.string "nome",         limit: 50, null: false
-    t.string "nome_subtipo", limit: 50, null: false
+    t.string  "nome",         limit: 50, null: false
+    t.string  "nome_subtipo", limit: 50, null: false
+    t.integer "id",                      null: false
+    t.integer "id_subtipo",              null: false
   end
 
   create_table "endereco", id: false, force: :cascade do |t|
@@ -75,12 +77,11 @@ ActiveRecord::Schema.define(version: 20151117222337) do
   end
 
   create_table "franquia", primary_key: "cnpj", force: :cascade do |t|
-    t.string  "nome",                      limit: 50,  null: false
-    t.string  "descricao",                 limit: 255
-    t.string  "faixa_de_preco",            limit: 50,  null: false
-    t.integer "tempo_de_entrega_estimada",             null: false
-    t.integer "custo_de_entrega_km",                   null: false
-    t.integer "raio_de_entrega",                       null: false
+    t.string  "nome",                      limit: 50, null: false
+    t.string  "faixa_de_preco",            limit: 50, null: false
+    t.integer "tempo_de_entrega_estimada",            null: false
+    t.integer "custo_de_entrega_km",                  null: false
+    t.integer "raio_de_entrega",                      null: false
     t.integer "nota"
     t.string  "cnpj_restaurante",          limit: 14
   end
@@ -93,29 +94,33 @@ ActiveRecord::Schema.define(version: 20151117222337) do
   end
 
   create_table "franquia_tem_tipoculinario", id: false, force: :cascade do |t|
-    t.string "cnpj", limit: 14, null: false
-    t.string "nome", limit: 50, null: false
+    t.string  "cnpj",              limit: 14, null: false
+    t.string  "nome",              limit: 50, null: false
+    t.integer "id_tipo_culinaria",            null: false
   end
 
-  create_table "horario_de_funcionamento", primary_key: "cnpj", force: :cascade do |t|
+  create_table "horario_de_funcionamento", id: false, force: :cascade do |t|
+    t.string "cnpj", limit: 14, null: false
     t.string "dia",  limit: 50, null: false
     t.string "hora", limit: 50, null: false
   end
 
-  create_table "ingrediente", id: false, force: :cascade do |t|
-    t.string "nome", limit: 50, null: false, index: :unique	
+  create_table "ingrediente", force: :cascade do |t|
+    t.string "nome", limit: 50, null: false
     t.string "tipo", limit: 50
   end
 
   create_table "pedido", force: :cascade do |t|
-    t.string   "status",            limit: 50, null: false
-    t.datetime "data",                         null: false
+    t.string   "status",        limit: 50, null: false
+    t.datetime "data",                     null: false
     t.datetime "atualizado_em"
-    t.integer  "atraso_aproximado"
-    t.decimal  "valor",                        null: false
-    t.integer  "quantidade",                   null: false
-    t.string   "cpf",               limit: 11
-    t.string   "cnpj",              limit: 14
+    t.decimal  "valor",                    null: false
+    t.integer  "quantidade",               null: false
+    t.string   "cpf",           limit: 11
+    t.string   "cnpj",          limit: 14
+    t.string   "cep",           limit: 8
+    t.integer  "numero"
+    t.string   "complemento",   limit: 50
   end
 
   create_table "pedido_tem_prato", id: false, force: :cascade do |t|
@@ -134,24 +139,25 @@ ActiveRecord::Schema.define(version: 20151117222337) do
   end
 
   create_table "restaurante", primary_key: "cnpj", force: :cascade do |t|
-    t.string "nome", limit: 50, null: false
+    t.string "nome",      limit: 50,  null: false
+    t.string "descricao", limit: 255
   end
 
   create_table "telefone", id: false, force: :cascade do |t|
-    t.string "telefone", limit: 12, null: false, index: :unique
-    t.string "cpf",      limit: 11, null: false, index: :unique
+    t.string "telefone", limit: 12, null: false
+    t.string "cpf",      limit: 11, null: false
   end
 
-  create_table "tipo_de_culinaria", primary_key: "nome", force: :cascade do |t|
+  create_table "tipo_de_culinaria", force: :cascade do |t|
+    t.string "nome", limit: 50, null: false
   end
 
-  create_table "usuario", id: false, force: :cascade do |t|
-    t.string "cpf", limit: 11, null: false, index: :unique
+  add_index "tipo_de_culinaria", ["nome"], name: "tipo_de_culinaria_nome_key", unique: true, using: :btree
+
+  create_table "usuario", primary_key: "cpf", force: :cascade do |t|
     t.string "senha", limit: 50,  null: false
     t.string "nome",  limit: 255, null: false
     t.string "email", limit: 50,  null: false
   end
-  
-  add_foreign_key :telefone, :usuario, column: :cpf, primary_key: :cpf
+
 end
- 
