@@ -102,10 +102,9 @@ ActiveRecord::Schema.define(version: 20151117222337) do
     t.string "hora", limit: 50, null: false
   end
 
-  create_table "ingrediente", primary_key: "id", force: :cascade do |t|
-    t.integer "id",  limit: 10
-    t.string "nome", limit: 15
-    t.string  "tipo", limit: 50
+  create_table "ingrediente", id: false, force: :cascade do |t|
+    t.string "nome", limit: 50, null: false, index: :unique	
+    t.string "tipo", limit: 50
   end
 
   create_table "pedido", force: :cascade do |t|
@@ -139,17 +138,20 @@ ActiveRecord::Schema.define(version: 20151117222337) do
   end
 
   create_table "telefone", id: false, force: :cascade do |t|
-    t.string "telefone", limit: 12, null: false
-    t.string "cpf",      limit: 11, null: false
+    t.string "telefone", limit: 12, null: false, index: :unique
+    t.string "cpf",      limit: 11, null: false, index: :unique
   end
 
   create_table "tipo_de_culinaria", primary_key: "nome", force: :cascade do |t|
   end
 
-  create_table "usuario", primary_key: "cpf", force: :cascade do |t|
+  create_table "usuario", id: false, force: :cascade do |t|
+    t.string "cpf", limit: 11, null: false, index: :unique
     t.string "senha", limit: 50,  null: false
     t.string "nome",  limit: 255, null: false
     t.string "email", limit: 50,  null: false
   end
-
+  
+  add_foreign_key :telefone, :usuario, column: :cpf, primary_key: :cpf
 end
+ 

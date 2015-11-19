@@ -2,7 +2,7 @@
 #
 # Table name: ingrediente
 #
-#  nome :integer          not null, primary key
+#  nome :string(50)       not null, primary key
 #  tipo :string(50)
 #
 
