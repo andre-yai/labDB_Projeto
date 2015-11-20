@@ -1,0 +1,13 @@
+<%= simple_form_for(@pedido_tem_prato) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :quantidade %>
+    <%= f.input :id_pedido %>
+    <%= f.input :id_prato %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

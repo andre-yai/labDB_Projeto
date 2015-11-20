@@ -1,0 +1,13 @@
+<%= simple_form_for(@e_subtipo) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :nome %>
+    <%= f.input :nome_subtipo %>
+    <%= f.input :id_subtipo %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

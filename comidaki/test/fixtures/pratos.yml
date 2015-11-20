@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  preco: 1.5
+  Valor_calorico: 1
+  nome: MyString
+  descricao: MyString
+  imagem: MyString
+  cnpj: MyString
+
+two:
+  preco: 1.5
+  Valor_calorico: 1
+  nome: MyString
+  descricao: MyString
+  imagem: MyString
+  cnpj: MyString

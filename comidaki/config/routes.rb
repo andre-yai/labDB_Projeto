@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  resources :franquia_tem_enderecos
+  resources :cliente_tem_enderecos
+  resources :pedido_tem_pratos
+  resources :administrador_de_restaurantes
+  resources :avaliacaos
+  resources :e_subtipos
+  resources :horario_de_funcionamentos
+  resources :e_composto_pors
+  resources :pratos
+  resources :franquia_tem_tipo_culinarios
+  resources :tipo_de_culinaria
+  resources :pedidos
+  resources :telefones
+  resources :endereco_franquia
+  resources :endereco_clientes
+  resources :enderecos
   resources :clientes
   resources :franquia
   resources :ingredientes

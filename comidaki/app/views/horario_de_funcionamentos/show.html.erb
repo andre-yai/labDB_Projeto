@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dia:</strong>
+  <%= @horario_de_funcionamento.dia %>
+</p>
+
+<p>
+  <strong>Hora:</strong>
+  <%= @horario_de_funcionamento.hora %>
+</p>
+
+<p>
+  <strong>Cnpj:</strong>
+  <%= @horario_de_funcionamento.cnpj %>
+</p>
+
+<%= link_to 'Edit', edit_horario_de_funcionamento_path(@horario_de_funcionamento) %> |
+<%= link_to 'Back', horario_de_funcionamentos_path %>

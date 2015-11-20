@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Preco:</strong>
+  <%= @prato.preco %>
+</p>
+
+<p>
+  <strong>Valor calorico:</strong>
+  <%= @prato.Valor_calorico %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @prato.nome %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @prato.descricao %>
+</p>
+
+<p>
+  <strong>Imagem:</strong>
+  <%= @prato.imagem %>
+</p>
+
+<p>
+  <strong>Cnpj:</strong>
+  <%= @prato.cnpj %>
+</p>
+
+<%= link_to 'Edit', edit_prato_path(@prato) %> |
+<%= link_to 'Back', pratos_path %>

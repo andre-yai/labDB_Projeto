@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  replica: MyString
+  data: 2015-11-19 23:22:57
+  comentario: MyString
+  nota: MyString
+  cpf: MyString
+  cnpf: MyString
+
+two:
+  replica: MyString
+  data: 2015-11-19 23:22:57
+  comentario: MyString
+  nota: MyString
+  cpf: MyString
+  cnpf: MyString

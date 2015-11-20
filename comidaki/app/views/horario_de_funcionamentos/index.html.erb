@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Horario De Funcionamentos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dia</th>
+      <th>Hora</th>
+      <th>Cnpj</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @horario_de_funcionamentos.each do |horario_de_funcionamento| %>
+      <tr>
+        <td><%= horario_de_funcionamento.dia %></td>
+        <td><%= horario_de_funcionamento.hora %></td>
+        <td><%= horario_de_funcionamento.cnpj %></td>
+        <td><%= link_to 'Show', horario_de_funcionamento %></td>
+        <td><%= link_to 'Edit', edit_horario_de_funcionamento_path(horario_de_funcionamento) %></td>
+        <td><%= link_to 'Destroy', horario_de_funcionamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Horario de funcionamento', new_horario_de_funcionamento_path %>

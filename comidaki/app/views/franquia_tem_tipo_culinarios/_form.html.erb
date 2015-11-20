@@ -1,0 +1,12 @@
+<%= simple_form_for(@franquia_tem_tipo_culinario) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :cnpj %>
+    <%= f.input :nome %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

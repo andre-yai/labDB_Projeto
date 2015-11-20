@@ -1,0 +1,2 @@
+module FranquiaTemEnderecosHelper
+end

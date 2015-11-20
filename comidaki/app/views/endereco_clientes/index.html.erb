@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Endereco Clientes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cpf</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @endereco_clientes.each do |endereco_cliente| %>
+      <tr>
+        <td><%= endereco_cliente.cpf %></td>
+        <td><%= link_to 'Show', endereco_cliente %></td>
+        <td><%= link_to 'Edit', edit_endereco_cliente_path(endereco_cliente) %></td>
+        <td><%= link_to 'Destroy', endereco_cliente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Endereco cliente', new_endereco_cliente_path %>

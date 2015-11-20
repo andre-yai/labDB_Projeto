@@ -1,0 +1,16 @@
+<%= simple_form_for(@prato) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :preco %>
+    <%= f.input :Valor_calorico %>
+    <%= f.input :nome %>
+    <%= f.input :descricao %>
+    <%= f.input :imagem %>
+    <%= f.input :cnpj %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

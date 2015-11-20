@@ -1,0 +1,2 @@
+module ClienteTemEnderecosHelper
+end

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pedido Tem Pratos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantidade</th>
+      <th>Id pedido</th>
+      <th>Id prato</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pedido_tem_pratos.each do |pedido_tem_prato| %>
+      <tr>
+        <td><%= pedido_tem_prato.quantidade %></td>
+        <td><%= pedido_tem_prato.id_pedido %></td>
+        <td><%= pedido_tem_prato.id_prato %></td>
+        <td><%= link_to 'Show', pedido_tem_prato %></td>
+        <td><%= link_to 'Edit', edit_pedido_tem_prato_path(pedido_tem_prato) %></td>
+        <td><%= link_to 'Destroy', pedido_tem_prato, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pedido tem prato', new_pedido_tem_prato_path %>
