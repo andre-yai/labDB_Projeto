@@ -3,7 +3,7 @@ class CreateAvaliacaos < ActiveRecord::Migration
     create_table :avaliacaos do |t|
       t.string :replica 
       t.string :comentario
-      t.string :nota, null: false
+      t.string :nota null: false
 
       t.timestamps null: false
     end
