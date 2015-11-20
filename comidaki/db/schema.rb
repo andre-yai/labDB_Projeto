@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120174351) do
+ActiveRecord::Schema.define(version: 20151120183232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,11 @@ ActiveRecord::Schema.define(version: 20151120174351) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "franquium_id"
+    t.integer  "usuario_id"
   end
 
   add_index "administrador_de_restaurantes", ["franquium_id"], name: "index_administrador_de_restaurantes_on_franquium_id", using: :btree
+  add_index "administrador_de_restaurantes", ["usuario_id"], name: "index_administrador_de_restaurantes_on_usuario_id", using: :btree
 
   create_table "avaliacaos", force: :cascade do |t|
     t.string   "replica"
@@ -126,9 +128,11 @@ ActiveRecord::Schema.define(version: 20151120174351) do
   add_index "pedidos", ["franquium_id"], name: "index_pedidos_on_franquium_id", using: :btree
 
   create_table "prato_e_composto_por", id: false, force: :cascade do |t|
-    t.integer "prato_id",       null: false
-    t.integer "ingrediente_id", null: false
+    t.integer "prato_id",        null: false
+    t.integer "ingrediente_id",  null: false
     t.float   "quantidade"
+    t.integer "pratos_id"
+    t.integer "ingredientes_id"
   end
 
   create_table "pratos", force: :cascade do |t|
@@ -149,11 +153,14 @@ ActiveRecord::Schema.define(version: 20151120174351) do
     t.integer "pedido_id",  null: false
     t.float   "quantidade"
     t.integer "pratos_id"
+    t.integer "pedidos_id"
   end
 
   create_table "restaurante_tem_tipo_culinaria", id: false, force: :cascade do |t|
     t.integer "restaurante_id",        null: false
     t.integer "tipo_de_culinarium_id", null: false
+    t.integer "restaurantes_id"
+    t.integer "tipo_de_culinaria_id"
   end
 
   create_table "restaurantes", force: :cascade do |t|
@@ -166,7 +173,10 @@ ActiveRecord::Schema.define(version: 20151120174351) do
 
   create_table "subtipo_culinaria", id: false, force: :cascade do |t|
     t.integer "tipo_de_culinarium_id", null: false
+    t.integer "tipo_de_culinaria_id"
   end
+
+  add_index "subtipo_culinaria", ["tipo_de_culinaria_id"], name: "index_subtipo_culinaria_on_tipo_de_culinaria_id", using: :btree
 
   create_table "telefones", force: :cascade do |t|
     t.string   "telefone",   null: false
@@ -193,6 +203,7 @@ ActiveRecord::Schema.define(version: 20151120174351) do
   end
 
   add_foreign_key "administrador_de_restaurantes", "franquia"
+  add_foreign_key "administrador_de_restaurantes", "usuarios"
   add_foreign_key "avaliacaos", "clientes"
   add_foreign_key "avaliacaos", "franquia"
   add_foreign_key "clientes", "usuarios"
@@ -205,7 +216,13 @@ ActiveRecord::Schema.define(version: 20151120174351) do
   add_foreign_key "pedidos", "clientes"
   add_foreign_key "pedidos", "endereco_clientes"
   add_foreign_key "pedidos", "franquia"
+  add_foreign_key "prato_e_composto_por", "ingredientes"
+  add_foreign_key "prato_e_composto_por", "pratos"
   add_foreign_key "pratos", "restaurantes"
+  add_foreign_key "pratos_pedido", "pedidos"
   add_foreign_key "pratos_pedido", "pratos"
+  add_foreign_key "restaurante_tem_tipo_culinaria", "restaurantes"
+  add_foreign_key "restaurante_tem_tipo_culinaria", "tipo_de_culinaria"
+  add_foreign_key "subtipo_culinaria", "tipo_de_culinaria"
   add_foreign_key "telefones", "usuarios"
 end
