@@ -1,6 +1,6 @@
 class CreateEnderecoFranquia < ActiveRecord::Migration
   def change
-    create_table :endereco_franquia do |t|
+    create_table :endereco_franquium do |t|
      
       t.timestamps null: false
     end

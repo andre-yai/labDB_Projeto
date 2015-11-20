@@ -181,26 +181,6 @@ FOREIGN KEY(ID_prato) REFERENCES Prato(ID),
 CHECK (Quantidade > 0)
 );
 
-CREATE TABLE cliente_tem_endereco (
-CPF VARCHAR(12),
-CEP CHAR(8),
-Numero INTEGER,
-Complemento VARCHAR(50),
-PRIMARY KEY(cpf,CEP,Numero,Complemento),
-FOREIGN KEY(CPF) REFERENCES Cliente (CPF),
-FOREIGN KEY(CEP,Numero,Complemento) REFERENCES Endereco_Cliente(CEP,Numero,Complemento)
-);
-
-CREATE TABLE franquia_tem_endereco (
-CNPJ CHAR(14),
-CEP CHAR(8),
-Numero INTEGER,
-Complemento VARCHAR(50),
-PRIMARY KEY(CNPJ,CEP,Numero,Complemento),
-FOREIGN KEY(CNPJ) REFERENCES Franquia (CNPJ),
-FOREIGN KEY(CEP,Numero,Complemento) REFERENCES Endereco_Franquia(CEP,Numero,Complemento)
-);
-
 ALTER TABLE Franquia ADD FOREIGN KEY(CNPJ_restaurante) REFERENCES Restaurante(CNPJ);
 
 Create View getMenuPorRestaurante as

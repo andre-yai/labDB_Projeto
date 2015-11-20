@@ -1,6 +1,6 @@
 class CreateFranquia < ActiveRecord::Migration
   def change
-    create_table :franquia do |t|
+    create_table :franquium do |t|
       t.string :nome, null: false
       t.string :Faixa_de_preco, null: false
       t.integer :Tempo_de_entrega_estimada, null: false
