@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class IngredienteTest < ActiveSupport::TestCase
+class ClienteTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

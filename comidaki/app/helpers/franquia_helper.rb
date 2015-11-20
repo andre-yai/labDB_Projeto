@@ -1,0 +1,2 @@
+module FranquiaHelper
+end

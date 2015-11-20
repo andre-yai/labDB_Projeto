@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @franquium.nome %>
+</p>
+
+<p>
+  <strong>Faixa de preco:</strong>
+  <%= @franquium.Faixa_de_preco %>
+</p>
+
+<p>
+  <strong>Tempo de entrega estimada:</strong>
+  <%= @franquium.Tempo_de_entrega_estimada %>
+</p>
+
+<p>
+  <strong>Custo de entrega km:</strong>
+  <%= @franquium.Custo_de_entrega_km %>
+</p>
+
+<p>
+  <strong>Raio de entrega:</strong>
+  <%= @franquium.Raio_de_entrega %>
+</p>
+
+<p>
+  <strong>Nota:</strong>
+  <%= @franquium.Nota %>
+</p>
+
+<p>
+  <strong>Cnpj:</strong>
+  <%= @franquium.cnpj %>
+</p>
+
+<%= link_to 'Edit', edit_franquium_path(@franquium) %> |
+<%= link_to 'Back', franquia_path %>

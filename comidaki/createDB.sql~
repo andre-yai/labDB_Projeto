@@ -1,0 +1,146 @@
+-- Projeto fase 3--
+CREATE TABLE Usuario (
+Senha VARCHAR(50) NOT NULL,
+Nome VARCHAR(255) NOT NULL,
+Email VARCHAR(50) NOT NULL,
+CPF CHAR(11) NOT NULL
+);
+
+CREATE TABLE Cliente (
+CPF CHAR(11) NOT NULL
+);
+
+CREATE TABLE Franquia (
+Nome VARCHAR(50) NOT NULL,
+Faixa_de_preco VARCHAR(50) NOT NULL,
+Tempo_de_entrega_estimada INTEGER NOT NULL,
+Custo_de_entrega_km INTEGER NOT NULL,
+Raio_de_entrega INTEGER NOT NULL,
+Nota INTEGER,
+CNPJ CHAR(14) NOT NULL,
+CNPJ_restaurante CHAR(14),
+);
+
+CREATE TABLE Endereco (
+Logradouro VARCHAR(255) NOT NULL,
+CEP CHAR(8),
+Numero INTEGER,
+Complemento VARCHAR(50),
+Cidade VARCHAR(50) NOT NULL,
+Estado VARCHAR(50) NOT NULL,
+Latitude Numeric,
+Longitude Numeric,
+);
+
+CREATE TABLE Endereco_Cliente (
+CEP CHAR(8) NOT NULL,
+Numero INTEGER NOT NULL,
+Complemento VARCHAR(50) NOT NULL,
+CPF CHAR(11) NOT NULL,
+);
+
+CREATE TABLE Endereco_Franquia (
+CEP CHAR(8) NOT NULL,
+Numero INTEGER NOT NULL,
+Complemento VARCHAR(50) NOT NULL,
+CNPJ CHAR(14) NOT NULL,
+);
+
+CREATE TABLE Telefone (
+Telefone VARCHAR(12) NOT NULL,
+CPF VARCHAR(11) NOT NULL,
+);
+
+CREATE TABLE Pedido (
+Status VARCHAR(50) NOT NULL,
+Data TIMESTAMP NOT NULL,
+Atualizado_em TIMESTAMP,
+Valor Numeric NOT NULL,
+Quantidade INTEGER NOT NULL,
+CPF VARCHAR(11),
+CNPJ CHAR(14) NOT NULL,
+CEP CHAR(8),
+Numero INTEGER,
+Complemento VARCHAR(50),
+CHECK (Valor > 0),
+CHECK (Quantidade > 0)
+);
+
+CREATE TABLE Restaurante (
+CNPJ CHAR(14) NOT NULL,
+Nome VARCHAR(50) NOT NULL,
+Descricao VARCHAR(255)
+);
+
+CREATE TABLE Tipo_de_culinaria (
+Nome VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE franquia_tem_tipoculinario (
+CNPJ CHAR(14) NOT NULL,
+Nome VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Ingrediente (
+ID INTEGER NOT NULL,
+Nome VARCHAR(50) NOT NULL,
+Tipo VARCHAR(50)
+);
+
+CREATE TABLE Prato (
+Preco Numeric NOT NULL,
+Valor_calorico INTEGER,
+Nome VARCHAR(50) NOT NULL,
+Descricao  VARCHAR(255),
+Imagem VARCHAR(50),
+CNPJ CHAR(14) NOT NULL
+);
+
+CREATE TABLE e_composto_por (
+ID_Prato INTEGER NOT NULL,
+ID_Ingrediente INTEGER NOT NULL
+);
+
+CREATE TABLE Horario_de_funcionamento (
+Dia VARCHAR(50) NOT NULL,
+Hora VARCHAR(50) NOT NULL,
+CNPJ CHAR(14) NOT NULL
+);
+
+CREATE TABLE e_subtipo (
+Nome VARCHAR(50) NOT NULL,
+Nome_subtipo VARCHAR(50) NOT NULL,
+ID_subtipo INTEGER NOT NULL
+);
+
+CREATE TABLE Avaliacao (
+Replica VARCHAR(255),
+Data TIMESTAMP,
+Comentario VARCHAR(255),
+Nota INTEGER NOT NULL,
+CPF VARCHAR(11) NOT NULL,
+CNPJ CHAR(14) NOT NULL
+);
+
+CREATE TABLE Administrador_de_restaurante (
+CPF VARCHAR(11) NOT NULL,
+CNPJ CHAR(14) NOT NULL
+);
+
+CREATE TABLE pedido_tem_prato (
+Quantidade INTEGER NOT NULL,
+ID_pedido INTEGER NOT NULL,
+ID_prato INTEGER NOT NULL,
+CHECK (Quantidade > 0)
+);
+
+Create View getMenuPorRestaurante as
+Select p.nome, p.preco, p.descricao, f.cnpj
+From franquia f, prato p
+Where f.cnpj = p.cnpj;
+
+Create View InfoFranquias As
+Select f.nome, f.tempo_de_entrega_estimada, f.faixa_de_preco, f.nota, ftt.nome as tipoCulinario
+From franquia f, franquia_tem_tipoculinario ftt
+Where f.cnpj = ftt.cnpj;
+

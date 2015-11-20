@@ -1,0 +1,17 @@
+<%= simple_form_for(@franquium) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :nome %>
+    <%= f.input :Faixa_de_preco %>
+    <%= f.input :Tempo_de_entrega_estimada %>
+    <%= f.input :Custo_de_entrega_km %>
+    <%= f.input :Raio_de_entrega %>
+    <%= f.input :Nota %>
+    <%= f.input :cnpj %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  CNPJ: MyString
-  Nome: MyString
-  primary_key: 
+  cnpj: MyString
+  nome: MyString
+  descricao: MyString
 
 two:
-  CNPJ: MyString
-  Nome: MyString
-  primary_key: 
+  cnpj: MyString
+  nome: MyString
+  descricao: MyString

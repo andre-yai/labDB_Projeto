@@ -11,153 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 20151120002932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "administrador_de_restaurante", primary_key: "cpf", force: :cascade do |t|
-    t.string "cnpj", limit: 14
+  create_table "clientes", force: :cascade do |t|
+    t.string   "cpf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "avaliacao", id: false, force: :cascade do |t|
-    t.string   "replica",    limit: 255
-    t.datetime "data",                   null: false
-    t.string   "comentario", limit: 255
-    t.integer  "nota",                   null: false
-    t.string   "cpf",        limit: 11,  null: false
-    t.string   "cnpj",       limit: 14,  null: false
+  create_table "franquia", force: :cascade do |t|
+    t.string   "nome"
+    t.string   "Faixa_de_preco"
+    t.integer  "Tempo_de_entrega_estimada"
+    t.integer  "Custo_de_entrega_km"
+    t.integer  "Raio_de_entrega"
+    t.integer  "Nota"
+    t.string   "cnpj"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  create_table "cliente", primary_key: "cpf", force: :cascade do |t|
+  create_table "ingredientes", force: :cascade do |t|
+    t.string   "nome"
+    t.string   "tipo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "cliente_tem_endereco", id: false, force: :cascade do |t|
-    t.string  "cpf",         limit: 12, null: false
-    t.string  "cep",         limit: 8,  null: false
-    t.integer "numero",                 null: false
-    t.string  "complemento", limit: 50, null: false
+  create_table "restaurantes", force: :cascade do |t|
+    t.string   "cnpj"
+    t.string   "nome"
+    t.string   "descricao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "e_composto_por", id: false, force: :cascade do |t|
-    t.integer "id_prato",       null: false
-    t.integer "id_ingrediente", null: false
-  end
-
-  create_table "e_subtipo", id: false, force: :cascade do |t|
-    t.string  "nome",         limit: 50, null: false
-    t.string  "nome_subtipo", limit: 50, null: false
-    t.integer "id",                      null: false
-    t.integer "id_subtipo",              null: false
-  end
-
-  create_table "endereco", id: false, force: :cascade do |t|
-    t.string  "logradouro",  limit: 255, null: false
-    t.string  "cep",         limit: 8,   null: false
-    t.integer "numero",                  null: false
-    t.string  "complemento", limit: 50,  null: false
-    t.string  "cidade",      limit: 50,  null: false
-    t.string  "estado",      limit: 50,  null: false
-    t.decimal "latitude"
-    t.decimal "longitude"
-  end
-
-  create_table "endereco_cliente", id: false, force: :cascade do |t|
-    t.string  "cep",         limit: 8,  null: false
-    t.integer "numero",                 null: false
-    t.string  "complemento", limit: 50, null: false
-    t.string  "cpf",         limit: 11, null: false
-  end
-
-  create_table "endereco_franquia", id: false, force: :cascade do |t|
-    t.string  "cep",         limit: 8,  null: false
-    t.integer "numero",                 null: false
-    t.string  "complemento", limit: 50, null: false
-    t.string  "cnpj",        limit: 14, null: false
-  end
-
-  create_table "franquia", primary_key: "cnpj", force: :cascade do |t|
-    t.string  "nome",                      limit: 50, null: false
-    t.string  "faixa_de_preco",            limit: 50, null: false
-    t.integer "tempo_de_entrega_estimada",            null: false
-    t.integer "custo_de_entrega_km",                  null: false
-    t.integer "raio_de_entrega",                      null: false
-    t.integer "nota"
-    t.string  "cnpj_restaurante",          limit: 14
-  end
-
-  create_table "franquia_tem_endereco", id: false, force: :cascade do |t|
-    t.string  "cnpj",        limit: 14, null: false
-    t.string  "cep",         limit: 8,  null: false
-    t.integer "numero",                 null: false
-    t.string  "complemento", limit: 50, null: false
-  end
-
-  create_table "franquia_tem_tipoculinario", id: false, force: :cascade do |t|
-    t.string  "cnpj",              limit: 14, null: false
-    t.string  "nome",              limit: 50, null: false
-    t.integer "id_tipo_culinaria",            null: false
-  end
-
-  create_table "horario_de_funcionamento", id: false, force: :cascade do |t|
-    t.string "cnpj", limit: 14, null: false
-    t.string "dia",  limit: 50, null: false
-    t.string "hora", limit: 50, null: false
-  end
-
-  create_table "ingrediente", force: :cascade do |t|
-    t.string "nome", limit: 50, null: false
-    t.string "tipo", limit: 50
-  end
-
-  create_table "pedido", force: :cascade do |t|
-    t.string   "status",        limit: 50, null: false
-    t.datetime "data",                     null: false
-    t.datetime "atualizado_em"
-    t.decimal  "valor",                    null: false
-    t.integer  "quantidade",               null: false
-    t.string   "cpf",           limit: 11
-    t.string   "cnpj",          limit: 14
-    t.string   "cep",           limit: 8
-    t.integer  "numero"
-    t.string   "complemento",   limit: 50
-  end
-
-  create_table "pedido_tem_prato", id: false, force: :cascade do |t|
-    t.integer "quantidade", null: false
-    t.integer "id_pedido",  null: false
-    t.integer "id_prato",   null: false
-  end
-
-  create_table "prato", force: :cascade do |t|
-    t.decimal "preco",                      null: false
-    t.integer "valor_calorico"
-    t.string  "nome",           limit: 50,  null: false
-    t.string  "descricao",      limit: 255
-    t.string  "imagem",         limit: 50
-    t.string  "cnpj",           limit: 14
-  end
-
-  create_table "restaurante", primary_key: "cnpj", force: :cascade do |t|
-    t.string "nome",      limit: 50,  null: false
-    t.string "descricao", limit: 255
-  end
-
-  create_table "telefone", id: false, force: :cascade do |t|
-    t.string "telefone", limit: 12, null: false
-    t.string "cpf",      limit: 11, null: false
-  end
-
-  create_table "tipo_de_culinaria", force: :cascade do |t|
-    t.string "nome", limit: 50, null: false
-  end
-
-  add_index "tipo_de_culinaria", ["nome"], name: "tipo_de_culinaria_nome_key", unique: true, using: :btree
-
-  create_table "usuario", primary_key: "cpf", force: :cascade do |t|
-    t.string "senha", limit: 50,  null: false
-    t.string "nome",  limit: 255, null: false
-    t.string "email", limit: 50,  null: false
+  create_table "usuarios", force: :cascade do |t|
+    t.string   "cpf"
+    t.string   "nome"
+    t.string   "email"
+    t.string   "senha"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

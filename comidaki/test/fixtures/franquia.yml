@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  Faixa_de_preco: MyString
+  Tempo_de_entrega_estimada: 1
+  Custo_de_entrega_km: 1
+  Raio_de_entrega: 1
+  Nota: 1
+  cnpj: MyString
+
+two:
+  nome: MyString
+  Faixa_de_preco: MyString
+  Tempo_de_entrega_estimada: 1
+  Custo_de_entrega_km: 1
+  Raio_de_entrega: 1
+  Nota: 1
+  cnpj: MyString
