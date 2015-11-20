@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120012339) do
+ActiveRecord::Schema.define(version: 20151120143231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,14 +35,24 @@ ActiveRecord::Schema.define(version: 20151120012339) do
   end
 
   create_table "endereco_clientes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "cliente_id"
+    t.integer  "endereco_id"
   end
 
+  add_index "endereco_clientes", ["cliente_id"], name: "index_endereco_clientes_on_cliente_id", using: :btree
+  add_index "endereco_clientes", ["endereco_id"], name: "index_endereco_clientes_on_endereco_id", using: :btree
+
   create_table "endereco_franquia", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "franquium_id"
+    t.integer  "endereco_id"
   end
+
+  add_index "endereco_franquia", ["endereco_id"], name: "index_endereco_franquia_on_endereco_id", using: :btree
+  add_index "endereco_franquia", ["franquium_id"], name: "index_endereco_franquia_on_franquium_id", using: :btree
 
   create_table "enderecos", force: :cascade do |t|
     t.string   "logradouro",  null: false
@@ -67,7 +77,12 @@ ActiveRecord::Schema.define(version: 20151120012339) do
     t.string   "cnpj",                                  null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.integer  "restaurante_id"
+    t.integer  "endereco_franquium_id"
   end
+
+  add_index "franquia", ["endereco_franquium_id"], name: "index_franquia_on_endereco_franquium_id", using: :btree
+  add_index "franquia", ["restaurante_id"], name: "index_franquia_on_restaurante_id", using: :btree
 
   create_table "horario_de_funcionamentos", force: :cascade do |t|
     t.string   "dia",        null: false
@@ -91,6 +106,15 @@ ActiveRecord::Schema.define(version: 20151120012339) do
     t.datetime "updated_at",                              null: false
   end
 
+  create_table "prato_e_composto_por", id: false, force: :cascade do |t|
+    t.integer "prato_id",       null: false
+    t.integer "ingrediente_id", null: false
+    t.float   "quantidade"
+  end
+
+  add_index "prato_e_composto_por", ["ingrediente_id", "prato_id"], name: "index_prato_e_composto_por_on_ingrediente_id_and_prato_id", using: :btree
+  add_index "prato_e_composto_por", ["prato_id", "ingrediente_id"], name: "index_prato_e_composto_por_on_prato_id_and_ingrediente_id", using: :btree
+
   create_table "pratos", force: :cascade do |t|
     t.float    "preco",          null: false
     t.integer  "Valor_calorico"
@@ -100,6 +124,15 @@ ActiveRecord::Schema.define(version: 20151120012339) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  create_table "pratos_pedido", id: false, force: :cascade do |t|
+    t.integer "prato_id",   null: false
+    t.integer "pedido_id",  null: false
+    t.float   "quantidade"
+  end
+
+  add_index "pratos_pedido", ["pedido_id", "prato_id"], name: "index_pratos_pedido_on_pedido_id_and_prato_id", using: :btree
+  add_index "pratos_pedido", ["prato_id", "pedido_id"], name: "index_pratos_pedido_on_prato_id_and_pedido_id", using: :btree
 
   create_table "restaurantes", force: :cascade do |t|
     t.string   "cnpj",       null: false
@@ -130,4 +163,10 @@ ActiveRecord::Schema.define(version: 20151120012339) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "endereco_clientes", "clientes"
+  add_foreign_key "endereco_clientes", "enderecos"
+  add_foreign_key "endereco_franquia", "enderecos"
+  add_foreign_key "endereco_franquia", "franquia"
+  add_foreign_key "franquia", "endereco_franquia"
+  add_foreign_key "franquia", "restaurantes"
 end
