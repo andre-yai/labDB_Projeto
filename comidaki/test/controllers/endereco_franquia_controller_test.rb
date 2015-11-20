@@ -18,7 +18,7 @@ class EnderecoFranquiaControllerTest < ActionController::TestCase
 
   test "should create endereco_franquium" do
     assert_difference('EnderecoFranquium.count') do
-      post :create, endereco_franquium: { cnpj: @endereco_franquium.cnpj }
+      post :create, endereco_franquium: {  }
     end
 
     assert_redirected_to endereco_franquium_path(assigns(:endereco_franquium))
@@ -35,7 +35,7 @@ class EnderecoFranquiaControllerTest < ActionController::TestCase
   end
 
   test "should update endereco_franquium" do
-    patch :update, id: @endereco_franquium, endereco_franquium: { cnpj: @endereco_franquium.cnpj }
+    patch :update, id: @endereco_franquium, endereco_franquium: {  }
     assert_redirected_to endereco_franquium_path(assigns(:endereco_franquium))
   end
 

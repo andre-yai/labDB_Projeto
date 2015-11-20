@@ -2,18 +2,18 @@
 
 one:
   nome: MyString
-  Faixa_de_preco: MyString
-  Tempo_de_entrega_estimada: 1
-  Custo_de_entrega_km: 1
-  Raio_de_entrega: 1
-  Nota: 1
+  faixa_preco: 1
+  tempo_entrega_estimado: 1
+  custo_entrega_km: 1.5
+  raio_entrega: 1
+  nota: 1
   cnpj: MyString
 
 two:
   nome: MyString
-  Faixa_de_preco: MyString
-  Tempo_de_entrega_estimada: 1
-  Custo_de_entrega_km: 1
-  Raio_de_entrega: 1
-  Nota: 1
+  faixa_preco: 1
+  tempo_entrega_estimado: 1
+  custo_entrega_km: 1.5
+  raio_entrega: 1
+  nota: 1
   cnpj: MyString

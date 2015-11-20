@@ -1,1 +1,1 @@
-json.extract! @endereco_franquium, :id, :cnpj, :created_at, :updated_at
+json.extract! @endereco_franquium, :id, :created_at, :updated_at

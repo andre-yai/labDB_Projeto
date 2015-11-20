@@ -69,6 +69,6 @@ class EnderecoFranquiaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def endereco_franquium_params
-      params.require(:endereco_franquium).permit(:cnpj)
+      params[:endereco_franquium]
     end
 end

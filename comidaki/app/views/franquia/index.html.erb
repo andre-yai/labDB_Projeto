@@ -6,10 +6,10 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Faixa de preco</th>
-      <th>Tempo de entrega estimada</th>
-      <th>Custo de entrega km</th>
-      <th>Raio de entrega</th>
+      <th>Faixa preco</th>
+      <th>Tempo entrega estimado</th>
+      <th>Custo entrega km</th>
+      <th>Raio entrega</th>
       <th>Nota</th>
       <th>Cnpj</th>
       <th colspan="3"></th>
@@ -20,11 +20,11 @@
     <% @franquia.each do |franquium| %>
       <tr>
         <td><%= franquium.nome %></td>
-        <td><%= franquium.Faixa_de_preco %></td>
-        <td><%= franquium.Tempo_de_entrega_estimada %></td>
-        <td><%= franquium.Custo_de_entrega_km %></td>
-        <td><%= franquium.Raio_de_entrega %></td>
-        <td><%= franquium.Nota %></td>
+        <td><%= franquium.faixa_preco %></td>
+        <td><%= franquium.tempo_entrega_estimado %></td>
+        <td><%= franquium.custo_entrega_km %></td>
+        <td><%= franquium.raio_entrega %></td>
+        <td><%= franquium.nota %></td>
         <td><%= franquium.cnpj %></td>
         <td><%= link_to 'Show', franquium %></td>
         <td><%= link_to 'Edit', edit_franquium_path(franquium) %></td>

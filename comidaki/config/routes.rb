@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :endereco_franquia
+  resources :franquia
   resources :administrador_de_restaurantes
   resources :avaliacaos
   resources :horario_de_funcionamentos
@@ -7,11 +9,9 @@ Rails.application.routes.draw do
   resources :tipo_de_culinaria
   resources :pedidos
   resources :telefones
-  resources :endereco_franquia
   resources :endereco_clientes
   resources :enderecos
   resources :clientes
-  resources :franquia
   resources :ingredientes
   resources :restaurantes
   resources :usuarios

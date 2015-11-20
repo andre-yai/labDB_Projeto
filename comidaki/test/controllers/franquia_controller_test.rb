@@ -18,7 +18,7 @@ class FranquiaControllerTest < ActionController::TestCase
 
   test "should create franquium" do
     assert_difference('Franquium.count') do
-      post :create, franquium: { Custo_de_entrega_km: @franquium.Custo_de_entrega_km, Faixa_de_preco: @franquium.Faixa_de_preco, Nota: @franquium.Nota, Raio_de_entrega: @franquium.Raio_de_entrega, Tempo_de_entrega_estimada: @franquium.Tempo_de_entrega_estimada, cnpj: @franquium.cnpj, nome: @franquium.nome }
+      post :create, franquium: { cnpj: @franquium.cnpj, custo_entrega_km: @franquium.custo_entrega_km, faixa_preco: @franquium.faixa_preco, nome: @franquium.nome, nota: @franquium.nota, raio_entrega: @franquium.raio_entrega, tempo_entrega_estimado: @franquium.tempo_entrega_estimado }
     end
 
     assert_redirected_to franquium_path(assigns(:franquium))
@@ -35,7 +35,7 @@ class FranquiaControllerTest < ActionController::TestCase
   end
 
   test "should update franquium" do
-    patch :update, id: @franquium, franquium: { Custo_de_entrega_km: @franquium.Custo_de_entrega_km, Faixa_de_preco: @franquium.Faixa_de_preco, Nota: @franquium.Nota, Raio_de_entrega: @franquium.Raio_de_entrega, Tempo_de_entrega_estimada: @franquium.Tempo_de_entrega_estimada, cnpj: @franquium.cnpj, nome: @franquium.nome }
+    patch :update, id: @franquium, franquium: { cnpj: @franquium.cnpj, custo_entrega_km: @franquium.custo_entrega_km, faixa_preco: @franquium.faixa_preco, nome: @franquium.nome, nota: @franquium.nota, raio_entrega: @franquium.raio_entrega, tempo_entrega_estimado: @franquium.tempo_entrega_estimado }
     assert_redirected_to franquium_path(assigns(:franquium))
   end
 
