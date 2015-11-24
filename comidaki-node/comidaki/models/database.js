@@ -3,7 +3,7 @@ var fs = require('fs');
 
 var sql = fs.readFileSync('modelofisicoREDUZIDO.sql').toString();
 
-var conString = 'postgres://andrey:z9lucky@localhost:5432/todo';
+var conString = 'postgres://user@pw@localhost:5432/todo';
 var client = new pg.Client(conString);
 client.connect(function(err, client) {
   if(err) {
