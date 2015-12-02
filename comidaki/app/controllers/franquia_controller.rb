@@ -15,6 +15,7 @@ class FranquiaController < ApplicationController
   # GET /franquia/new
   def new
     @franquium = Franquium.new
+    @restaurantes = Restaurante.all
   end
 
   # GET /franquia/1/edit

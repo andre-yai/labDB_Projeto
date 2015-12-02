@@ -1,14 +1,18 @@
 <%= simple_form_for(@franquium) do |f| %>
   <%= f.error_notification %>
 
+
   <div class="form-inputs">
+    
+   <%-#=  f.input collection: @restaurantes -%>  
+    <%-# =as: :grouped_select, group_method: :countries-%> 
+    <%= f.input :cnpj, label: 'CNPJ da franquia:'%>
     <%= f.input :nome %>
     <%= f.input :faixa_preco %>
     <%= f.input :tempo_entrega_estimado %>
     <%= f.input :custo_entrega_km %>
     <%= f.input :raio_entrega %>
     <%= f.input :nota %>
-    <%= f.input :cnpj %>
   </div>
 
   <div class="form-actions">

@@ -20,6 +20,7 @@
     <% @franquia.each do |franquium| %>
       <tr>
         <td><%= franquium.nome %></td>
+</td>
         <td><%= franquium.faixa_preco %></td>
         <td><%= franquium.tempo_entrega_estimado %></td>
         <td><%= franquium.custo_entrega_km %></td>
@@ -36,4 +37,4 @@
 
 <br>
 
-<%= link_to 'New Franquium', new_franquium_path %>
+<%= link_to 'Nova Franquia', new_franquium_path %>
