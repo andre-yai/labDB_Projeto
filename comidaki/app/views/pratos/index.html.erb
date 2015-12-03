@@ -24,6 +24,7 @@
         <td><%= prato.descricao %></td>
         <td><%= prato.imagem %></td>
         <td><%= prato.cnpj %></td>
+        <td><%= link_to 'Adicionar Ingredientes', '/ingredientes/new', :method => :get %></td>
         <td><%= link_to 'Show', prato %></td>
         <td><%= link_to 'Edit', edit_prato_path(prato) %></td>
         <td><%= link_to 'Destroy', prato, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New Prato', new_prato_path %>
+<%#= link_to 'New Prato', new_prato_path %>

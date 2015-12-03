@@ -11,12 +11,12 @@
   </thead>
 
   <tbody>
-    <% @tipo_de_culinaria.each do |tipo_de_culinarium| %>
+    <% @tipo_de_culinaria.each do |tipo_de_culinaria| %>
       <tr>
-        <td><%= tipo_de_culinarium.nome %></td>
-        <td><%= link_to 'Show', tipo_de_culinarium %></td>
-        <td><%= link_to 'Edit', edit_tipo_de_culinarium_path(tipo_de_culinarium) %></td>
-        <td><%= link_to 'Destroy', tipo_de_culinarium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= tipo_de_culinaria.nome %></td>
+        <td><%= link_to 'Show', tipo_de_culinaria %></td>
+        <td><%= link_to 'Edit', edit_tipo_de_culinaria_path(tipo_de_culinaria) %></td>
+        <td><%= link_to 'Destroy', tipo_de_culinaria, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Tipo de culinarium', new_tipo_de_culinarium_path %>
+<%= link_to 'New Tipo de culinaria', new_tipo_de_culinaria_path %>

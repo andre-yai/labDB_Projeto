@@ -27,7 +27,12 @@
         <td><%= franquium.raio_entrega %></td>
         <td><%= franquium.nota %></td>
         <td><%= franquium.cnpj %></td>
-        <td><%= link_to 'Show', franquium %></td>
+          <td><%= link_to 'Adicionar Endereco', '/endereco_franquia/new', :method => :get %></td>
+          <td><%= link_to 'Adicionar Prato', '/pratos/new', :method => :get %></td>
+          <td><%= link_to 'Adicionar Tipo Culinario', '/tipo_de_culinaria/new', :method => :get %></td>
+          <td><%= link_to 'Adicionar Horario de Funcionamento', '/horario_de_funcionamentos/new', :method => :get %></td>
+          <td><%= link_to 'Adicionar Avaliacao', '/avaliacaos/new', :method => :get %></td>
+          <td><%= link_to 'Show', franquium %></td>
         <td><%= link_to 'Edit', edit_franquium_path(franquium) %></td>
         <td><%= link_to 'Destroy', franquium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -37,4 +42,6 @@
 
 <br>
 
-<%= link_to 'Nova Franquia', new_franquium_path %>
+<%#= link_to 'Nova Franquia', new_franquium_path %>
+
+<p><%= link_to "Menu", '/', :method => :get %></p>

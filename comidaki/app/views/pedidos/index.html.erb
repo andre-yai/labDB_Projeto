@@ -23,13 +23,13 @@
       <tr>
         <td><%= pedido.status %></td>
         <td><%= pedido.data %></td>
-        <td><%= pedido.atualizado_em %></td>
+        <td><%#= pedido.atualizado_em %></td>
         <td><%= pedido.valor %></td>
-        <td><%= pedido.quantidade %></td>
-        <td><%= pedido.cpf %></td>
-        <td><%= pedido.cnpj %></td>
-        <td><%= pedido.cep %></td>
-        <td><%= pedido.complemento %></td>
+        <td><%#= pedido.quantidade %></td>
+        <td><%#= pedido.cpf %></td>
+        <td><%#= pedido.cnpj %></td>
+        <td><%#= pedido.cep %></td>
+        <td><%#= pedido.complemento %></td>
         <td><%= link_to 'Show', pedido %></td>
         <td><%= link_to 'Edit', edit_pedido_path(pedido) %></td>
         <td><%= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,3 +41,5 @@
 <br>
 
 <%= link_to 'New Pedido', new_pedido_path %>
+
+<p><%= link_to "Menu", '/', :method => :get %></p>

@@ -20,7 +20,8 @@
         <td><%= usuario.nome %></td>
         <td><%= usuario.email %></td>
         <td><%= usuario.senha %></td>
-        <td><%= link_to 'Show', usuario %></td>
+          <td><%= link_to 'Adicionar Telefone', '/telefones/new', :method => :get %></td>
+         <td><%= link_to 'Show', usuario %></td>
         <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
         <td><%= link_to 'Destroy', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -30,4 +31,8 @@
 
 <br>
 
-<%= link_to 'New Usuario', new_usuario_path %>
+<td><%= link_to 'Adicionar Cliente', '/clientes/new', :method => :get %></td>
+<td><%= link_to 'Adicionar Admin Restaurante', '/administrador_de_restaurantes/new', :method => :get %></td>
+<%#= link_to 'New Usuario', new_usuario_path %>
+
+<p><%= link_to "Menu", '/', :method => :get %></p>

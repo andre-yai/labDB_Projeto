@@ -18,9 +18,11 @@
         <td><%= restaurante.cnpj %></td>
         <td><%= restaurante.nome %></td>
         <td><%= restaurante.descricao %></td>
+        <td><%= link_to 'Adicionar Franquia', '/franquia/new' %></td>
         <td><%= link_to 'Show', restaurante %></td>
         <td><%= link_to 'Edit', edit_restaurante_path(restaurante) %></td>
         <td><%= link_to 'Destroy', restaurante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
@@ -29,3 +31,6 @@
 <br>
 
 <%= link_to 'New Restaurante', new_restaurante_path %>
+
+
+<p><%= link_to "Menu", '/', :method => :get %></p>
